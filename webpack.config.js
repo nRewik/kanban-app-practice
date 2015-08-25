@@ -29,7 +29,19 @@ if (TARGET === 'dev'){
 	module.exports = merge( common , {
 		devtool: 'eval',
 		module:{
+      preLoaders: [
+        {
+          test: /\.jsx?$/,
+          loader: 'eslint-loader',
+          include: path.resolve(ROOT_PATH, 'app')
+        }
+      ],
 			loaders:[
+        {
+          test: /\.css$/,
+          loaders: ['style','css'],
+          include: path.resolve(ROOT_PATH, 'app')
+        },
 			  {
 			  	test:/\.jsx?$/,
 			  	loaders:['react-hot','babel?stage=1'],
